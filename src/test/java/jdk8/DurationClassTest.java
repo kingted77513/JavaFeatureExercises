@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class DurationClassTest {
 
     @Test
-    public void toMinutes_360Seconds_Return6Minutes() {
+    void toMinutes_360Seconds_Return6Minutes() {
         Duration seconds = Duration.ofSeconds(360);
 
         long expected = 6;
