@@ -9,7 +9,7 @@ public class SwitchStatementFeatureTest {
         final String fruit = "apple";
 
         final String excepted = getCaseByStringUsingBeforeJDK(fruit);
-        final String actual = getCaseByStringUsingJDK8(fruit);
+        final String actual = getCaseByStringUsingJDK7(fruit);
 
         Assertions.assertEquals(excepted, actual);
 
@@ -25,7 +25,7 @@ public class SwitchStatementFeatureTest {
         }
     }
 
-    private String getCaseByStringUsingJDK8(final String fruit) {
+    private String getCaseByStringUsingJDK7(final String fruit) {
         switch (fruit) {
             case "apple":
                 return "This is an apple";
