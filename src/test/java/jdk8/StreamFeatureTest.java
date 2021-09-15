@@ -2,9 +2,10 @@ package jdk8;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -81,5 +82,19 @@ public class StreamFeatureTest {
 
     private List<Integer> getPowerIntegerListUsingJDK8(List<Integer> numbers) {
         return numbers.stream().map(number -> Double.valueOf(Math.pow(number, 2)).intValue()).collect(Collectors.toList());
+    }
+
+    @Test
+    void joinEntry_MergeParams_ReturnMergeString() {
+        final LinkedHashMap<String, String> params = new LinkedHashMap<>();
+        params.put("Amount", "100");
+        params.put("IsTest", Boolean.FALSE.toString());
+        params.put("CurrencyId", "1");
+
+        String excepted = "Amount=100&CurrencyId=1&IsTest=false";
+        String actual = params.entrySet().stream().sorted(Map.Entry.comparingByKey())
+            .map(entry -> entry.getKey() + "=" + entry.getValue())
+            .collect(Collectors.joining("&"));
+        Assertions.assertEquals(excepted, actual);
     }
 }
