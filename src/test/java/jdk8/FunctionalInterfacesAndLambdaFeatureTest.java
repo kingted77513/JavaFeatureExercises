@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +27,7 @@ public class FunctionalInterfacesAndLambdaFeatureTest {
     }
 
     private void sortUsingBeforeJDK(List<String> names) {
-        Collections.sort(names, new Comparator<>() {
+        Collections.sort(names, new Comparator<String>() {
             @Override
             public int compare(String s1, String s2) {
                 return s1.compareTo(s2);
