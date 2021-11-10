@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Image {
+public class Button {
     private int width;
     private int height;
 }
