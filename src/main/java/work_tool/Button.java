@@ -1,11 +1,13 @@
 package work_tool;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
+@Builder
 public class Button {
     private int width;
     private int height;
+    private int upper;
+    private int lower;
 }

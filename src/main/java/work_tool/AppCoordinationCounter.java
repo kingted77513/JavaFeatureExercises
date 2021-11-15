@@ -13,8 +13,7 @@ public class AppCoordinationCounter {
     private HyperText policy;   // 注冊協議
 
     private void printInputFieldSetting() {
-        System.out.println("--- register-input input ---");
-
+        System.out.println("--- register-input ---");
         final int inputWidth = input.getRightLower().x - input.getLeftUpper().x;
         final int inputHeight = input.getRightLower().y - input.getLeftUpper().y;
 
@@ -24,12 +23,20 @@ public class AppCoordinationCounter {
 
         System.out.printf("width: %.4fvw;%n", (inputWidthRatio * 100));
         System.out.printf("height: %.4fvh;%n", (inputHeightRatio * 100));
-        System.out.printf("font-size: %.4fvh;%n", (inputHeightRatio * 100));
+        System.out.println();
+        System.out.println("position: absolute;");
+        System.out.println("top: 0%;");
+        System.out.println("left: 0%;");
 
         final double locationBuffer = 0.005;
         final double inputWidthLocation = ((double) input.getLeftUpper().x / image.getWidth()) - locationBuffer;
         final double inputHeightLocation = ((double) input.getLeftUpper().y / image.getHeight()) - locationBuffer;
         System.out.printf("transform: translate(%.4fvw, %.4fvh);%n", (inputWidthLocation * 100), (inputHeightLocation * 100));
+
+        System.out.println("--- register-input input ---");
+        System.out.printf("width: %.4fvw;%n", (inputWidthRatio * 100));
+        System.out.printf("height: %.4fvh;%n", (inputHeightRatio * 100));
+        System.out.printf("font-size: %.4fvh;%n", (inputHeightRatio * 100));
     }
 
     private void printButtonSetting() {
@@ -40,6 +47,16 @@ public class AppCoordinationCounter {
 
         System.out.printf("width: %.4fvw;%n", (buttonWidthRatio * 100));
         System.out.printf("height: %.4fvh;%n", (buttonHeightRatio * 100));
+        System.out.println();
+        System.out.println("position: absolute;");
+        System.out.println("top: 0%;");
+        System.out.println("left: 50%;");
+
+
+        final double ratio = 0.1;
+        final double upperLocation = (button.getUpper() + ((button.getLower() - button.getUpper()) * ratio))
+            / image.getHeight();
+        System.out.printf("transform: translate(-50%s %.4fvh;)%n", "%,", (upperLocation * 100));
     }
 
     private void printPrivacy() {
@@ -57,6 +74,11 @@ public class AppCoordinationCounter {
 
         System.out.printf("width: %.4fvw;%n", (textWidthRatio * 100));
         System.out.printf("height: %.4fvh;%n", (textHeightRatio * 100));
+
+        System.out.println();
+        System.out.println("position: absolute;");
+        System.out.println("top: 0%;");
+        System.out.println("left: 0%;");
 
         final double textWidthLocation = (double) hyperText.getLeftUpper().x / image.getWidth();
         final double textHeightLocation = (double) hyperText.getLeftUpper().y / image.getHeight();
@@ -76,7 +98,12 @@ public class AppCoordinationCounter {
             .rightLower(new Point(630, 827))
             .build();
 
-        Button button = new Button(607, 77);
+        Button button = Button.builder()
+            .width(607)
+            .height(77)
+            .upper(1096)
+            .lower(1235)
+            .build();
 
         HyperText privacy = HyperText.builder()
             .leftUpper(new Point(326, 1016))
