@@ -36,7 +36,9 @@ public class AppCoordinationCounter {
         System.out.println("--- register-input input ---");
         System.out.printf("width: %.4fvw;%n", (inputWidthRatio * 100));
         System.out.printf("height: %.4fvh;%n", (inputHeightRatio * 100));
-        System.out.printf("font-size: %.4fvh;%n", (inputHeightRatio * 100));
+
+        final double fontRatio = 0.5;
+        System.out.printf("font-size: %.4fvh;%n", ((inputHeightRatio * 100) * fontRatio));
     }
 
     private void printButtonSetting() {
@@ -56,7 +58,7 @@ public class AppCoordinationCounter {
         final double ratio = 0.1;
         final double upperLocation = (button.getUpper() + ((button.getLower() - button.getUpper()) * ratio))
             / image.getHeight();
-        System.out.printf("transform: translate(-50%s %.4fvh;)%n", "%,", (upperLocation * 100));
+        System.out.printf("transform: translate(-50%s %.4fvh);%n", "%,", (upperLocation * 100));
     }
 
     private void printPrivacy() {
