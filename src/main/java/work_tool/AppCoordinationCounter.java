@@ -66,7 +66,7 @@ public class AppCoordinationCounter {
         printHyperTextSetting(privacy);
     }
 
-    private void printHyperTextSetting(HyperText hyperText) {
+    private void printHyperTextSetting(final HyperText hyperText) {
 
         final int inputWidth = hyperText.getRightLower().x - hyperText.getLeftUpper().x;
         final int inputHeight = hyperText.getRightLower().y - hyperText.getLeftUpper().y;
@@ -92,32 +92,49 @@ public class AppCoordinationCounter {
         printHyperTextSetting(policy);
     }
 
-    public static void main(String[] args) {
-        Image image = new Image(750, 1335);
+    public static void main(final String[] args) {
+        final int imageWidth = 750;
+        final int imageHeight = 1334;
+        final int buttonWidth = 607;
+        final int buttonHeight = 77;
 
-        InputField input = InputField.builder()
-            .leftUpper(new Point(192, 801))
-            .rightLower(new Point(630, 827))
+        final Image image = new Image(imageWidth, imageHeight);
+
+        final int inputLU_X = 191;
+//        final int inputLU_X = (750 / 2) - 200;   // center case
+        final int inputLU_Y = 1069;
+        final int inputRL_Y = 1098;
+        final InputField input = InputField.builder()
+            .leftUpper(new Point(inputLU_X, inputLU_Y))
+            .rightLower(new Point(inputLU_X + 400, inputRL_Y))
             .build();
 
-        Button button = Button.builder()
-            .width(607)
-            .height(77)
-            .upper(1096)
-            .lower(1235)
+        final int buttonTopLocation = 1129;
+        final int buttonFooterLocation = 1259;
+        final Button button = Button.builder()
+            .width(buttonWidth)
+            .height(buttonHeight)
+            .upper(buttonTopLocation)
+            .lower(buttonFooterLocation)
             .build();
 
-        HyperText privacy = HyperText.builder()
-            .leftUpper(new Point(326, 1016))
-            .rightLower(new Point(492, 1039))
+        final int privacyLU_X = 334;
+        final int privacyLU_Y = 1258;
+        final int privacyRL_X = 488;
+        final int privacyRL_Y = 1280;
+        final HyperText privacy = HyperText.builder()
+            .leftUpper(new Point(privacyLU_X, privacyLU_Y))
+            .rightLower(new Point(privacyRL_X, privacyRL_Y))
             .build();
 
-        HyperText policy = HyperText.builder()
-            .leftUpper(new Point(510, 1016))
-            .rightLower(new Point(630, 1039))
+        final int policyLU_X = 502;
+        final int policyRL_X = 614;
+        final HyperText policy = HyperText.builder()
+            .leftUpper(new Point(policyLU_X, privacyLU_Y))
+            .rightLower(new Point(policyRL_X, privacyRL_Y))
             .build();
 
-        AppCoordinationCounter counter = AppCoordinationCounter.builder()
+        final AppCoordinationCounter counter = AppCoordinationCounter.builder()
             .image(image)
             .button(button)
             .input(input)
