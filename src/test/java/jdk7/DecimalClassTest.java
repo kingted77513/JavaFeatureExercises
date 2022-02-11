@@ -9,54 +9,56 @@ public class DecimalClassTest {
 
     @Test
     void divideBigDecimal() {
-        BigDecimal lendMoney = new BigDecimal(3780);
-        BigDecimal deviceMoney = new BigDecimal(6000);
+        final BigDecimal lendMoney = new BigDecimal(3780);
+        final BigDecimal deviceMoney = new BigDecimal(6000);
 
-        BigDecimal excepted = new BigDecimal("0.37");
-        BigDecimal actual = BigDecimal.ONE.subtract(lendMoney.divide(deviceMoney, 2, RoundingMode.HALF_UP));
+        final BigDecimal excepted = new BigDecimal("0.37");
+        final BigDecimal actual = BigDecimal.ONE.subtract(lendMoney.divide(deviceMoney, 2, RoundingMode.HALF_UP));
 
         Assertions.assertEquals(excepted, actual);
+        Assertions.assertEquals(2, excepted.scale());
+        Assertions.assertEquals(2, actual.scale());
     }
 
     @Test
     void toString_DecimalToString_ReturnDigitString() {
-        BigDecimal integer = BigDecimal.valueOf(10);
+        final BigDecimal integer = BigDecimal.valueOf(10);
 
-        String excepted = "10";
-        String actual = integer.toString();
+        final String excepted = "10";
+        final String actual = integer.toString();
         Assertions.assertEquals(excepted, actual);
     }
 
     @Test
     void compareTo_TwoBigDecimal_ReturnNumberOfOver() {
-        int excepted = 1;
+        final int excepted = 1;
 
-        BigDecimal num1 = new BigDecimal(10);
-        BigDecimal num2 = new BigDecimal(5);
+        final BigDecimal num1 = new BigDecimal(10);
+        final BigDecimal num2 = new BigDecimal(5);
 
-        int actual = num1.compareTo(num2);
+        final int actual = num1.compareTo(num2);
         Assertions.assertEquals(excepted, actual);
     }
 
     @Test
     void compareTo_TwoBigDecimal_ReturnNumberOfEqual() {
-        int excepted = 0;
+        final int excepted = 0;
 
-        BigDecimal num1 = new BigDecimal(10);
-        BigDecimal num2 = new BigDecimal(10);
+        final BigDecimal num1 = new BigDecimal(10);
+        final BigDecimal num2 = new BigDecimal(10);
 
-        int actual = num1.compareTo(num2);
+        final int actual = num1.compareTo(num2);
         Assertions.assertEquals(excepted, actual);
     }
 
     @Test
     void compareTo_TwoBigDecimal_ReturnNumberOfLess() {
-        int excepted = -1;
+        final int excepted = -1;
 
-        BigDecimal num1 = new BigDecimal(5);
-        BigDecimal num2 = new BigDecimal(10);
+        final BigDecimal num1 = new BigDecimal(5);
+        final BigDecimal num2 = new BigDecimal(10);
 
-        int actual = num1.compareTo(num2);
+        final int actual = num1.compareTo(num2);
         Assertions.assertEquals(excepted, actual);
     }
 }
